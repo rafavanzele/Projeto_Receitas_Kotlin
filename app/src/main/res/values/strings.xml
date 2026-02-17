@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Recipes</string>
+    <string name="app_title">Comece agora!</string>
+    <string name="unlimited_recipes">Receitas ilimitadas para todos</string>
+    <string name="button_login">Login</string>
+    <string name="button_signup">Entrar</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="criar_conta">Crie sua conta</string>
+    <string name="foto_de_perfil">Foto de perfil</string>
+    <string name="camera_icon">Camera icon</string>
+    <string name="digite_o_seu_nome">Digite o seu nome</string>
+    <string name="person_icon">Person icon</string>
+    <string name="e_mail">E-mail</string>
+    <string name="e_mail_icon">E-mail icon</string>
+    <string name="senha">Senha</string>
+    <string name="lock_icon">Lock icon</string>
+    <string name="login">Login</string>
+    <string name="insira_seus_dados">Por favor, insira seus dados</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="n_o_tem_uma_conta">Não tem uma conta?</string>
+    <string name="cadastre_se_aqui">Cadastre-se aqui</string>
+</resources>
