@@ -10,22 +10,26 @@ import br.com.fiap.recipes.screens.InitialScreen
 import br.com.fiap.recipes.screens.LoginScreen
 
 @Composable
-fun NavigationRotes() {
+fun NavigationRoutes() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = Destination.InitialScreen.route
     ){
         composable(Destination.InitialScreen.route){
-            InitialScreen()
+            InitialScreen(navController)
         }
 
         composable(Destination.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(navController)
         }
 
         composable(Destination.LoginScreen.route) {
-            LoginScreen() 
+            LoginScreen(navController)
+        }
+
+        composable(Destination.SignupScreen.route) {
+            //SignupScreen(navController)
         }
     }
 }
