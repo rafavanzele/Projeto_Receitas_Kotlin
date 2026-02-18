@@ -56,4 +56,7 @@ dependencies {
 
     //importando mais icons
     implementation("androidx.compose.material:material-icons-extended-android:1.7.8")
+
+    //Navigation compose dependence
+    implementation(libs.androidx.navigation.compose)
 }
