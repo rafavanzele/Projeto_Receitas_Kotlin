@@ -21,4 +21,5 @@
     <string name="cadastre_se_aqui">Cadastre-se aqui</string>
     <string name="busque_receitas_aqui">Busque receitas aqui...</string>
     <string name="categorias">Categorias</string>
+    <string name="search_by_recipes">procurar receita</string>
 </resources>
