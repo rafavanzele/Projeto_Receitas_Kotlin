@@ -41,7 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.recipes.R
-import br.com.fiap.recipes.components.Recipe
+import br.com.fiap.recipes.model.Recipe
 import br.com.fiap.recipes.repository.getAllRecipes
 import br.com.fiap.recipes.repository.getCategoryById
 import br.com.fiap.recipes.repository.getRecipesByCategory

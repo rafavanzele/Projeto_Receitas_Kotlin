@@ -22,4 +22,9 @@
     <string name="busque_receitas_aqui">Busque receitas aqui...</string>
     <string name="categorias">Categorias</string>
     <string name="search_by_recipes">procurar receita</string>
+    <string name="create_account" />
+    <string name="signup_subtitle">signup_subtitle</string>
+    <string name="your_name">your_name</string>
+    <string name="your_e_mail">your_email</string>
+    <string name="your_password">your_password</string>
 </resources>

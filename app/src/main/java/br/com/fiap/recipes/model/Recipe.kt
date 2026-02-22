@@ -1,7 +1,6 @@
-package br.com.fiap.recipes.components
+package br.com.fiap.recipes.model
 
 import androidx.annotation.DrawableRes
-import br.com.fiap.recipes.model.Category
 import java.time.LocalDate
 
 data class Recipe(

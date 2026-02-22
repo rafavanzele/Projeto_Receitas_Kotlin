@@ -1,4 +1,4 @@
-package br.com.fiap.recipes.components
+package br.com.fiap.recipes.model
 
 data class User(
     val id: Int = 0,

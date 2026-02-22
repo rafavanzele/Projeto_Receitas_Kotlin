@@ -1,4 +1,4 @@
-package br.com.fiap.recipes.components
+package br.com.fiap.recipes.model
 
 enum class DifficultLevel(val description: String) {
     BEGINNER("Beginner"),

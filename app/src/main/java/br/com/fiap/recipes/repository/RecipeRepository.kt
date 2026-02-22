@@ -1,9 +1,9 @@
 package br.com.fiap.recipes.repository
 
 import br.com.fiap.recipes.R
-import br.com.fiap.recipes.components.DifficultLevel
-import br.com.fiap.recipes.components.Recipe
-import br.com.fiap.recipes.components.User
+import br.com.fiap.recipes.model.DifficultLevel
+import br.com.fiap.recipes.model.Recipe
+import br.com.fiap.recipes.model.User
 import br.com.fiap.recipes.model.Category
 import java.time.LocalDate
 

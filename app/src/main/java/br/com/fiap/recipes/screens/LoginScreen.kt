@@ -14,10 +14,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.RemoveRedEye
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -30,10 +34,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -41,6 +49,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
 import br.com.fiap.recipes.navigation.Destination
+import br.com.fiap.recipes.repository.SharedPreferencesUserRepository
+import br.com.fiap.recipes.repository.UserRepository
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 @Composable
@@ -119,6 +129,17 @@ fun LoginForm(navController: NavController) {
         mutableStateOf("")
     }
 
+    var showPassword by remember {
+        mutableStateOf(false)
+    }
+
+    var authenticateError by remember {
+        mutableStateOf(false)
+    }
+
+    //criar uma instancia de classe SharedPreferenceRepository
+    val userRepository: UserRepository = SharedPreferencesUserRepository(LocalContext.current)
+
     Column() {
         OutlinedTextField(
             value = email,
@@ -181,23 +202,46 @@ fun LoginForm(navController: NavController) {
                 )
             },
             trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.RemoveRedEye,
-                    contentDescription = "Removed redeye icon",
-                    tint = MaterialTheme.colorScheme.primary
-                )
+                val image = if (showPassword){
+                    Icons.Default.Visibility
+                } else {
+                    Icons.Default.VisibilityOff
+                }
+                IconButton(onClick = {showPassword = !showPassword}) {
+                    Icon(
+                        imageVector = image,
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.tertiary
+
+                    )
+                }
             },
+
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
                 imeAction = ImeAction.Done
-            )
+            ),
+
+            visualTransformation = if(showPassword){
+                VisualTransformation.None
+            } else{
+                PasswordVisualTransformation()
+            }
         )
 
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
             onClick = {
-                navController.navigate(Destination.HomeScreen.createRoute(email))
+                val authenticate = userRepository.login(email, password)
+
+                if(authenticate) {
+                    navController.navigate(Destination.HomeScreen.createRoute(email))
+                } else {
+                    authenticateError = true
+                }
+
+
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -209,6 +253,24 @@ fun LoginForm(navController: NavController) {
                 style = MaterialTheme.typography.labelMedium
             )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        if (authenticateError) {
+            Row {
+                Icon(
+                    imageVector = Icons.Default.Error,
+                    contentDescription = "",
+                    tint = MaterialTheme.colorScheme.error
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Falha na autenticação!",
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+        }
+
 
         Spacer(modifier = Modifier.height(16.dp))
 
